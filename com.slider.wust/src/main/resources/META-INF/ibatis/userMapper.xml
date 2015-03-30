@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UserMapper">
+
+	<sql id="column">
+	id,name,phone,email,status
+	</sql>
+	<sql id="whereClause">
+		<where>
+			<if test="id != null" >
+				and id = #{id}
+			</if>
+			<if test="name != null and name !=''">
+				and name = #{name}
+			</if>
+			<if test="email != null and email !=''">
+				and email = #{email}
+			</if>
+			<if test="phone !=null and phone !=''">
+				and phone = #{phone}
+			</if>
+			<if test="status != null ">
+				and status = #{status}
+			</if>
+		</where>	
+	</sql>
+	<select id="select" parameterType="user" resultType="user">
+		select <include refid="column"/>
+		from user
+		<include refid="whereClause"/>
+	</select>
+	
+</mapper>

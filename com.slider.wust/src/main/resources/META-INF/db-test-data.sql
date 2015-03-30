@@ -1,0 +1,1 @@
+insert into user(name,phone,email,status) values ('slider','15671628581','695498702@qq.com',1);
